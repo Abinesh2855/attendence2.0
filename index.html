@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Attendance AI Dashboard</title>
+  <link rel="stylesheet" href="/static/css/style.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+<div class="app">
+  <aside class="sidebar">
+    <div class="brand"><span>✦</span> Attendance AI</div>
+    <p class="muted">Smart attendance analytics</p>
+    <nav>
+      <a class="active" href="#dashboard">Dashboard</a>
+      <a href="#students">Students</a>
+      <a href="#prediction">Prediction</a>
+      <a href="#analytics">Analytics</a>
+    </nav>
+    <div class="side-card">
+      <small>DATA PERIOD</small>
+      <strong>July – September 2026</strong>
+      <span>46 students · 69 days</span>
+    </div>
+  </aside>
+
+  <main class="main">
+    <header class="topbar">
+      <div>
+        <p class="eyebrow">BUSINESS ANALYTICS</p>
+        <h1>Attendance Overview</h1>
+        <p class="subtitle">Monitor attendance patterns and prepare for predictive analytics.</p>
+      </div>
+      <div class="status-pill"><i></i> Dataset connected</div>
+    </header>
+
+    <section class="cards" id="dashboard">
+      <div class="card stat"><span>Students</span><b id="students">—</b><small>Active students</small></div>
+      <div class="card stat"><span>Attendance</span><b id="attendance">—</b><small>Overall attendance</small></div>
+      <div class="card stat"><span>Present</span><b id="present">—</b><small>Recorded present</small></div>
+      <div class="card stat"><span>Absent</span><b id="absent">—</b><small>Recorded absent</small></div>
+    </section>
+
+    <section class="grid two">
+      <div class="card chart-card">
+        <div class="card-head"><div><h2>Daily Attendance Trend</h2><p>Class attendance percentage by date</p></div></div>
+        <canvas id="dailyChart"></canvas>
+      </div>
+      <div class="card chart-card">
+        <div class="card-head"><div><h2>Present vs Absent</h2><p>All records in the dataset</p></div></div>
+        <canvas id="donutChart"></canvas>
+      </div>
+    </section>
+
+    <section class="grid two" id="analytics">
+      <div class="card chart-card">
+        <div class="card-head"><div><h2>Monthly Attendance</h2><p>July to September 2026</p></div></div>
+        <canvas id="monthlyChart"></canvas>
+      </div>
+      <div class="card chart-card">
+        <div class="card-head"><div><h2>Student Attendance</h2><p>Current dataset distribution</p></div></div>
+        <canvas id="studentChart"></canvas>
+      </div>
+    </section>
+
+    <section class="card" id="students">
+      <div class="card-head">
+        <div><h2>Student Analysis</h2><p>Select a student to inspect their history.</p></div>
+        <select id="studentSelect"><option value="">Select student</option></select>
+      </div>
+      <div id="studentPanel" class="student-panel hidden"></div>
+    </section>
+
+    <section class="card prediction" id="prediction">
+      <div class="card-head"><div><h2>Prediction Preview</h2><p>Baseline probability now; trained ML model will be added next.</p></div></div>
+      <div class="predict-row">
+        <select id="predictSelect"><option value="">Select student</option></select>
+        <button onclick="predict()">Predict</button>
+      </div>
+      <div id="predictionResult" class="prediction-result">Choose a student to generate a baseline estimate.</div>
+    </section>
+  </main>
+</div>
+<script src="/static/js/dashboard.js"></script>
+</body>
+</html>
